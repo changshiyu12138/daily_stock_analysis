@@ -122,6 +122,7 @@
 |------------|------|:----:|
 | `SERPAPI_API_KEYS` | [SerpAPI](https://serpapi.com/github-daily-stock-analysis)：搜索引擎结果补强，适合实时金融新闻 | **推荐** |
 | `ANSPIRE_API_KEYS` | [Anspire](https://open.anspire.cn/dsa?share_code=QFBC0FYC) 搜索 API Key，可与其模型网关共用 | 可选 |
+| `DEEPSEEK_SEARCH_API_KEYS` | [DeepSeek Search](https://api-docs.deepseek.com/guides/search)：官方自研搜索 API，按成功请求计费（$0.75/千次） | 可选 |
 | `TAVILY_API_KEYS` | [Tavily](https://tavily.com/)：通用新闻搜索 API | 可选 |
 | `BOCHA_API_KEYS` | [博查搜索](https://open.bocha.cn/)：中文搜索优化，支持 AI 摘要 | 可选 |
 | `BRAVE_API_KEYS` | [Brave Search](https://brave.com/search/api/)：隐私优先，美股资讯补强 | 可选 |

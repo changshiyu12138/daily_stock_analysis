@@ -12,6 +12,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/).
 - [文档] 恢复 README、部署指南及模型/搜索配置表中的 Anspire 可点击链接并保留推广码，继续作为 SerpAPI 后的可选搜索服务。
 
 - [改进] 下线 Anspire 合作宣传及专属额度说明，移除 README 推荐入口，调整配置示例和渠道展示顺序；新闻搜索顺序调整至 SerpAPI 之后，保留原推广码链接、已有 Key 和模型渠道兼容。
+- [新功能] 搜索服务新增 DeepSeek Search provider：配置 `DEEPSEEK_SEARCH_API_KEYS` 接入 DeepSeek 官方搜索 API（自研引擎，按成功请求计费），按新闻时间窗口自动追加 `after:` 算子并保证 query 不超 128 字符上限，401/402/429/400 错误分级提示，纳入现有引擎轮询与降级链；同步 `.env.example`、配置注册表、README 与完整指南。
 
 - [修复] Agent 工具消息内容与工具调用参数序列化不再透传 NaN/±Infinity：`LLMToolAdapter._convert_messages` 序列化前将非有限浮点递归归一化为 `null`，并以 `allow_nan=False` 输出严格 RFC 8259 JSON，避免 LiteLLM 以 `"NaN" is not valid JSON` 拒绝请求（#2471）。
 

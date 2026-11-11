@@ -1091,6 +1091,7 @@ class Config:
     tavily_api_keys: List[str] = field(default_factory=list)  # Tavily API Keys
     brave_api_keys: List[str] = field(default_factory=list)  # Brave Search API Keys
     serpapi_keys: List[str] = field(default_factory=list)  # SerpAPI Keys
+    deepseek_search_api_keys: List[str] = field(default_factory=list)  # DeepSeek Search Keys
     searxng_base_urls: List[str] = field(default_factory=list)  # SearXNG instance URLs (self-hosted, no quota)
     searxng_public_instances_enabled: bool = False  # Opt in to public discovery when base URLs are absent
     searxng_timeout_seconds: int = 10  # 自建 SearXNG 单次搜索超时（秒）
@@ -1814,6 +1815,9 @@ class Config:
         serpapi_keys_str = os.getenv('SERPAPI_API_KEYS', '')
         serpapi_keys = [k.strip() for k in serpapi_keys_str.split(',') if k.strip()]
 
+        deepseek_search_keys_str = os.getenv('DEEPSEEK_SEARCH_API_KEYS', '')
+        deepseek_search_api_keys = [k.strip() for k in deepseek_search_keys_str.split(',') if k.strip()]
+
         brave_keys_str = os.getenv('BRAVE_API_KEYS', '')
         brave_api_keys = [k.strip() for k in brave_keys_str.split(',') if k.strip()]
 
@@ -2008,6 +2012,7 @@ class Config:
             tavily_api_keys=tavily_api_keys,
             brave_api_keys=brave_api_keys,
             serpapi_keys=serpapi_keys,
+            deepseek_search_api_keys=deepseek_search_api_keys,
             searxng_base_urls=searxng_base_urls,
             searxng_public_instances_enabled=searxng_public_instances_enabled,
             searxng_timeout_seconds=parse_env_int(
@@ -3179,6 +3184,7 @@ class Config:
             or self.tavily_api_keys
             or self.brave_api_keys
             or self.serpapi_keys
+            or self.deepseek_search_api_keys
             or self.has_searxng_enabled()
         )
 
@@ -3605,7 +3611,7 @@ class Config:
         if not self.has_search_capability_enabled():
             issues.append(ConfigIssue(
                 severity="info",
-                message="未配置搜索引擎能力 (Bocha/MiniMax/Tavily/Brave/SerpAPI/SearXNG)，新闻搜索功能将不可用",
+                message="未配置搜索引擎能力 (Bocha/MiniMax/Tavily/Brave/SerpAPI/DeepSeek/SearXNG)，新闻搜索功能将不可用",
                 field="BOCHA_API_KEYS",
             ))
 
