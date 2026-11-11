@@ -306,6 +306,7 @@ class StockAnalysisPipeline:
                 anspire_keys=self.config.anspire_api_keys,
                 brave_keys=self.config.brave_api_keys,
                 serpapi_keys=self.config.serpapi_keys,
+                deepseek_keys=getattr(self.config, "deepseek_search_api_keys", None),
                 minimax_keys=self.config.minimax_api_keys,
                 searxng_base_urls=self.config.searxng_base_urls,
                 searxng_public_instances_enabled=self.config.searxng_public_instances_enabled,

@@ -1149,6 +1149,20 @@ _FIELD_DEFINITIONS: Dict[str, Dict[str, Any]] = {
         "validation": {"multi_value": True, "delimiter": ","},
         "display_order": 40,
     },
+    "DEEPSEEK_SEARCH_API_KEYS": {
+        "title": "DeepSeek Search Keys",
+        "description": "Comma-separated DeepSeek Search API keys (DeepSeek platform account).",
+        "category": "data_source",
+        "data_type": "string",
+        "ui_control": "password",
+        "is_sensitive": True,
+        "is_required": False,
+        "is_editable": True,
+        "default_value": None,
+        "options": [],
+        "validation": {"multi_value": True, "delimiter": ","},
+        "display_order": 45,
+    },
     "BRAVE_API_KEYS": {
         "title": "Brave API Keys",
         "description": "Comma-separated Brave Search API keys.",
@@ -4815,6 +4829,14 @@ _FIELD_HELP_METADATA: Dict[str, Dict[str, Any]] = {
         "help_key": "settings.data_source.search_api_keys",
         "examples": [
             "SERPAPI_API_KEYS=serpapi_key_1,serpapi_key_2",
+        ],
+        "docs": _DOC_FULL_GUIDE_SEARCH,
+        "warning_codes": ["secret_value", "comma_separated_keys"],
+    },
+    "DEEPSEEK_SEARCH_API_KEYS": {
+        "help_key": "settings.data_source.search_api_keys",
+        "examples": [
+            "DEEPSEEK_SEARCH_API_KEYS=deepseek_key_1,deepseek_key_2",
         ],
         "docs": _DOC_FULL_GUIDE_SEARCH,
         "warning_codes": ["secret_value", "comma_separated_keys"],
